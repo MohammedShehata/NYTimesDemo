@@ -12,8 +12,6 @@ android {
         applicationId "com.sh.nytimes"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,6 +20,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+
+        flavorDimensions "default"
+        dev {
+            applicationIdSuffix ".dev"
+            versionCode 1
+            versionName "1.0"
+
+            buildConfigField "String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\""
+        }
+        prod {
+            versionCode 1
+            versionName "1.0"
+
+            buildConfigField "String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\""
         }
     }
     compileOptions {
@@ -48,4 +63,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
 }
