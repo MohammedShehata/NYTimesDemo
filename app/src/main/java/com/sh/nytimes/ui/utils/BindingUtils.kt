@@ -41,7 +41,7 @@ fun setArticleImageCaption(textView: TextView, article: Article) {
     if (article.media.isNotEmpty()) {
         captionText = article.media[0].caption
     }
-    if (captionText == null) {
+    if (captionText.isNullOrEmpty()) {
         textView.visibility = View.GONE
     } else {
         textView.visibility = View.VISIBLE

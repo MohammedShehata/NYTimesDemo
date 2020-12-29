@@ -40,10 +40,12 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
         })
 
         getBaseViewModel()?.getError()?.observe(viewLifecycleOwner, {
-            if (it is Int) {
-                showMessage(getString(it))
-            } else {
-                showMessage(it.toString())
+            it?.let {
+                if (it is Int) {
+                    showMessage(getString(it))
+                } else {
+                    showMessage(it.toString())
+                }
             }
         })
     }

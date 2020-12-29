@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sh.nytimes.data.models.Article
 import com.sh.nytimes.databinding.CellArticlesBinding
 
-class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
+class ArticlesAdapter(private val onArticleClickListener: ArticlesFragment.OnArticleClickListener) :
+    RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
 
     private val articles = ArrayList<Article>()
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.binding.article = articles[position]
+        holder.binding.onArticleClickedListener = onArticleClickListener
         holder.binding.executePendingBindings()
     }
 

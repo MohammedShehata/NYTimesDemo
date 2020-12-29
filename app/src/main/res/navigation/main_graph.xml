@@ -7,5 +7,19 @@
     <fragment
         android:id="@+id/articlesFragment"
         android:name="com.sh.nytimes.ui.fragments.articles.ArticlesFragment"
-        android:label="@string/articles_bar_title" />
+        android:label="@string/articles_bar_title">
+        <action
+            android:id="@+id/action_articlesFragment_to_articleDetailsFragment"
+            app:destination="@id/articleDetailsFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.sh.nytimes.ui.fragments.articles.details.ArticleDetailsFragment"
+        android:label="@string/article_detils_bar_title">
+        <argument
+            android:name="article"
+            app:argType="com.sh.nytimes.data.models.Article" />
+    </fragment>
 </navigation>

@@ -7,6 +7,10 @@
         <variable
             name="article"
             type="com.sh.nytimes.data.models.Article" />
+
+        <variable
+            name="onArticleClickedListener"
+            type="com.sh.nytimes.ui.fragments.articles.ArticlesFragment.OnArticleClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -14,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
+        android:onClick="@{() -> onArticleClickedListener.onArticleClick(article)}"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="7dp">
 
