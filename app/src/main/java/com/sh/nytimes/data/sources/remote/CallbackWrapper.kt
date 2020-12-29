@@ -1,5 +1,6 @@
 package com.sh.nytimes.data.sources.remote
 
+import com.sh.nytimes.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,12 +18,16 @@ abstract class CallbackWrapper<T> : Callback<T> {
         val body: T? = response.body()
         if (response.isSuccessful && body != null) {
             onSuccess(body)
+            onComplete()
         } else {
-            onFailure("error happened")
+            onFailure(R.string.error_happened)
+            onComplete()
         }
     }
 
     abstract fun onSuccess(response: T)
 
-    abstract fun onFailure(errorMessage: String?)
+    abstract fun onFailure(errorMessage: Any?)
+
+    abstract fun onComplete()
 }
