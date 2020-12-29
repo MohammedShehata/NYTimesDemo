@@ -11,7 +11,7 @@ import com.sh.nytimes.data.sources.remote.services.ArticlesService
 class ArticlesRepository : BaseRepository() {
 
     private val _articles = MutableLiveData<List<Article>>()
-    private val articles: LiveData<List<Article>> = _articles
+    val articles: LiveData<List<Article>> = _articles
 
     private val articlesService = ApiManager.getArticlesService()
 
