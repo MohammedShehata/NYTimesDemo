@@ -31,12 +31,14 @@ android {
             versionName "1.0"
 
             buildConfigField "String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\""
+            buildConfigField "String", "API_KEY", "\"1AbRAYPG3XFCTsNDrcMGAlNXSJmkA88g\""
         }
         prod {
             versionCode 1
             versionName "1.0"
 
             buildConfigField "String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\""
+            buildConfigField "String", "API_KEY", "\"1AbRAYPG3XFCTsNDrcMGAlNXSJmkA88g\""
         }
     }
     compileOptions {
