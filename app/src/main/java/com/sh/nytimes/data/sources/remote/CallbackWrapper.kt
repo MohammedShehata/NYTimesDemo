@@ -11,6 +11,7 @@ abstract class CallbackWrapper<T> : Callback<T> {
     override fun onFailure(call: Call<T>, t: Throwable) {
 
         onFailure(t.message)
+        onComplete()
     }
 
     override fun onResponse(call: Call<T>, response: Response<T>) {
@@ -18,11 +19,10 @@ abstract class CallbackWrapper<T> : Callback<T> {
         val body: T? = response.body()
         if (response.isSuccessful && body != null) {
             onSuccess(body)
-            onComplete()
         } else {
             onFailure(R.string.error_happened)
-            onComplete()
         }
+        onComplete()
     }
 
     abstract fun onSuccess(response: T)
