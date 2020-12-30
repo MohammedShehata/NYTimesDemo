@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -21,6 +22,12 @@ fun loadArticleImage(imageView: ImageView, article: Article) {
         imageView.visibility = View.GONE
     } else {
         imageView.visibility = View.VISIBLE
+
+        val circularProgressDrawable = CircularProgressDrawable(imageView.context)
+        circularProgressDrawable.strokeWidth = 10f
+        circularProgressDrawable.centerRadius = 50f
+        circularProgressDrawable.start()
+
         Glide.with(imageView)
             .load(imgUrl)
             .apply(
@@ -30,7 +37,7 @@ fun loadArticleImage(imageView: ImageView, article: Article) {
                         imageView.context.resources.getDimension(R.dimen.image_radius).toInt()
                     )
                 )
-            ).apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+            ).apply(RequestOptions.placeholderOf(circularProgressDrawable))
             .into(imageView)
     }
 }
