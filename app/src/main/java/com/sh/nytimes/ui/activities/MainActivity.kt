@@ -8,20 +8,22 @@ import androidx.navigation.ui.setupWithNavController
 import com.sh.nytimes.R
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mToolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setUpActionBar()
+        mToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(mToolbar)
     }
 
-    private fun setUpActionBar() {
-
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+    override fun onResume() {
+        super.onResume()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        toolbar.setupWithNavController(navHostFragment.navController)
+        mToolbar.setupWithNavController(navHostFragment.navController)
     }
 }
