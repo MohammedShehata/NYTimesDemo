@@ -42,6 +42,7 @@ OR Simply:
 * [Maven](https://maven.apache.org/) - Dependency Management
 * Kotlin
 * MVVM architecture using Livedata and Viewmodels
+* [NY times APIS](https://developer.nytimes.com/get-started) - [Show API](https://developer.nytimes.com/docs/most-popular-product/1/routes/viewed/%7Bperiod%7D.json/get)
 * Espresso and mockWebServer for UI tests
 * Junit for unit tests
 
