@@ -8,13 +8,17 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+    ext.mockPortNumber = "8080"
 
     defaultConfig {
         applicationId "com.sh.nytimes"
         minSdkVersion 19
         targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "Integer", "MOCK_PORT_NUMBER", "$mockPortNumber"
     }
 
     buildTypes {
@@ -28,10 +32,14 @@ android {
         flavorDimensions "default"
         dev {
             applicationIdSuffix ".dev"
-            versionCode 1
-            versionName "1.0"
 
             buildConfigField "String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\""
+            buildConfigField "String", "API_KEY", "\"1AbRAYPG3XFCTsNDrcMGAlNXSJmkA88g\""
+        }
+        mockDev {
+            applicationIdSuffix ".dev"
+
+            buildConfigField "String", "BASE_URL", "\"http://127.0.0.1:$mockPortNumber/\""
             buildConfigField "String", "API_KEY", "\"1AbRAYPG3XFCTsNDrcMGAlNXSJmkA88g\""
         }
         prod {
@@ -68,7 +76,12 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.6.0'
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:4.3.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
