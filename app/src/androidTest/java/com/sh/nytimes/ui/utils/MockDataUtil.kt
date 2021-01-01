@@ -25,5 +25,5 @@ object MockDataUtil {
         return Gson().fromJson(String(buffer), ArticlesResponse::class.java).results[position]
     }
 
-    private fun getContext() = InstrumentationRegistry.getTargetContext().applicationContext
+    private fun getContext() = InstrumentationRegistry.getContext()
 }
